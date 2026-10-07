@@ -10,14 +10,16 @@ CREATE TABLE Faculty (
     FacultyID INT PRIMARY KEY,
     FacultyName VARCHAR(50),
     DepartmentID INT,
-    FOREIGN KEY (DepartmentID) REFERENCES Department(DepartmentID)
+    FOREIGN KEY (DepartmentID)
+        REFERENCES Department(DepartmentID)
 );
 
 CREATE TABLE Course (
     CourseID INT PRIMARY KEY,
     CourseName VARCHAR(50),
     FacultyID INT,
-    FOREIGN KEY (FacultyID) REFERENCES Faculty(FacultyID)
+    FOREIGN KEY (FacultyID)
+        REFERENCES Faculty(FacultyID)
 );
 
 CREATE TABLE Student (
@@ -29,8 +31,10 @@ CREATE TABLE StudentCourse (
     StudentID INT,
     CourseID INT,
     PRIMARY KEY (StudentID, CourseID),
-    FOREIGN KEY (StudentID) REFERENCES Student(StudentID),
-    FOREIGN KEY (CourseID) REFERENCES Course(CourseID)
+    FOREIGN KEY (StudentID)
+        REFERENCES Student(StudentID),
+    FOREIGN KEY (CourseID)
+        REFERENCES Course(CourseID)
 );
 
 INSERT INTO Department (DepartmentID, DepartmentName)
@@ -77,3 +81,4 @@ JOIN Faculty
     ON Course.FacultyID = Faculty.FacultyID
 JOIN Department
     ON Faculty.DepartmentID = Department.DepartmentID;
+
